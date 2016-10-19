@@ -139,7 +139,7 @@ map.on('click', function (e) {
     // based on the feature found.
     var popup = new mapboxgl.Popup()
         .setLngLat(feature.geometry.coordinates)
-        .setHTML(feature.properties.Nom + ' <br> <img src="http://maps.googleapis.com/maps/api/streetview?size=300x200&location=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&key=AIzaSyClBldV2tJDv0UbhKWWkZud__r6jxmPzWo">' + ' <br> <a href="https://www.tabac-info-service.fr/J-arrete-de-fumer"> <strong>Arréter de fumer</strong></a> <br> ou y aller <a href="http://maps.apple.com/?ll=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '"><i class="fa fa-apple fa-2x" aria-hidden="true"></i></a>' + ' - ' +  '<a href="comgooglemaps://?center=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&zoom=14"><i class="fa fa-android fa-2x" aria-hidden="true"></i></a>')
+        .setHTML(feature.properties.Nom + ' <br> <img src="http://maps.googleapis.com/maps/api/streetview?size=300x200&location=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&key=AIzaSyClBldV2tJDv0UbhKWWkZud__r6jxmPzWo">' + ' <br> <a href="https://www.tabac-info-service.fr/J-arrete-de-fumer" target="_blank"> <strong>Arréter de fumer</strong></a> <br> ou y aller <a href="http://maps.apple.com/?ll=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '"><i class="fa fa-apple fa-2x" aria-hidden="true"></i></a>' + ' - ' +  '<a href="comgooglemaps://?center=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&zoom=14"><i class="fa fa-android fa-2x" aria-hidden="true"></i></a>')
         .addTo(map);
 });
 
