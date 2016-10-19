@@ -34,7 +34,7 @@ var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/maloeu/ciueol6g500cx2is1qh2zdhc9', //stylesheet location
     center: [3.34,48.86], // starting position
-    zoom: 6 // starting zoom
+    zoom: 15 // starting zoom
 
 });
 
@@ -50,9 +50,9 @@ map.on('load', function () {
     map.addSource('tabac', {
         'type': 'geojson',
         'data': 'geojson/tabac.geojson',
-        'cluster': false,
+        'cluster': false, //  annoying lag
         'clusterMaxZoom': 20, // Max zoom to cluster points on
-        'clusterRadius': 20
+        'clusterRadius': 20 // Max zoom to cluster points on
     });
 
     map.addLayer({
@@ -93,6 +93,15 @@ map.on('load', function () {
     }, 'water');
 
 });
+
+var param = location.search;
+alert (param);
+
+var result = param.slice(1, -1);
+alert (result);
+
+map.setCenter(result);
+
 
 
 var toggleableLayerIds = [ 'tabac', 'tabacOuvertDimanche' ];
