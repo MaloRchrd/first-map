@@ -16,6 +16,8 @@ DONE :
   ✓ promo pour tabac info service https://www.tabac-info-service.fr/
 
 TO DO
+-Add url parameters support
+-Create messenger bot.
 -Create React native app using https://github.com/airbnb/react-native-maps
 -Add server side.
 -Enable user to crowdsource data ( add or remove a place, Add info to a specific place.)
