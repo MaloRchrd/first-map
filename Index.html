@@ -24,22 +24,29 @@
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
 
 <nav id="menuSelect"></nav>
+
 <div id='map'></div>
+<button id='fly'>Fly</button>
 <div id='geocoder-container'></div>
 
 
 <script>
+
+
+
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFsb2V1IiwiYSI6ImNpam85Z25wcjAwNXJ2ZW03OGhjaWZkb2EifQ.V5GJN0qWM06ofq0EKUyESg';
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/maloeu/ciueol6g500cx2is1qh2zdhc9', //stylesheet location
-    center: [3.34,48.86], // starting position
-    zoom: 15 // starting zoom
+    center: [2.352221,48.856614], // starting position
+    zoom: 13 // starting zoom
 
 });
 
 
-map.addControl(new mapboxgl.Geocoder({position: 'top-right'}));
+map.addControl(new mapboxgl.Geocoder({position: 'top-left', placeholder:'Chercher votre adresse,ville..'}));
 
 var nav = new mapboxgl.NavigationControl({position: 'top-left'}); // position is optional
 map.addControl(nav);
@@ -94,15 +101,6 @@ map.on('load', function () {
 
 });
 
-var param = location.search;
-alert (param);
-
-var result = param.slice(1, -1);
-alert (result);
-
-map.setCenter(result);
-
-
 
 var toggleableLayerIds = [ 'tabac', 'tabacOuvertDimanche' ];
 
@@ -148,9 +146,46 @@ map.on('click', function (e) {
     // based on the feature found.
     var popup = new mapboxgl.Popup()
         .setLngLat(feature.geometry.coordinates)
-        .setHTML(feature.properties.Nom + ' <br> <img src="http://maps.googleapis.com/maps/api/streetview?size=300x200&location=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&key=AIzaSyClBldV2tJDv0UbhKWWkZud__r6jxmPzWo">' + ' <br> <a href="https://www.tabac-info-service.fr/J-arrete-de-fumer" target="_blank"> <strong>Arréter de fumer</strong></a> <br> ou y aller <a href="http://maps.apple.com/?ll=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '"><i class="fa fa-apple fa-2x" aria-hidden="true"></i></a>' + ' - ' +  '<a href="comgooglemaps://?center=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&zoom=14"><i class="fa fa-android fa-2x" aria-hidden="true"></i></a>')
+        .setHTML(feature.properties.Nom + ' <br> <img src="http://maps.googleapis.com/maps/api/streetview?size=300x200&location=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&key=STREET-VIEW-API-Key">' + ' <br> <a href="https://www.tabac-info-service.fr/J-arrete-de-fumer" target="_blank"> <strong>Arréter de fumer</strong></a> <br> ou y aller <a href="http://maps.apple.com/?ll=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '"><i class="fa fa-apple fa-2x" aria-hidden="true"></i></a>' + ' - ' +  '<a href="comgooglemaps://?center=' + feature.properties.Latitude + ',' + feature.properties.Longitude + '&zoom=14"><i class="fa fa-android fa-2x" aria-hidden="true"></i></a>')
         .addTo(map);
 });
+
+//var param = location.search;
+//alert (param);
+//var result = param.slice(1, -1);
+//if (result != 0) alert("yes"),
+
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition),
+        alert(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    alert(position.coords.latitude,position.coords.longitude) ;
+}
+
+
+// Fly to a random location by offsetting the point -74.50, 40
+// by up to 5 degrees.
+
+document.getElementById('fly').addEventListener('click', function () {
+    // Fly to a random location by offsetting the point -74.50, 40
+    // by up to 5 degrees.
+    map.flyTo({
+        center: [position.coords.latitude+ "," +position.coords.longitude]
+    });
+});
+
+
+
+ // map.setCenter([result]);
+
+
 
 
 </script>
