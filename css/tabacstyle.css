@@ -28,6 +28,21 @@ Author URI:
 #header {
 }
 
+#fly {
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 20%;
+        height: 40px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        color: #fff;
+        background: #ee8a65;
+}
+
 /*--- Map controler section ---*/
 #geocoder-container {
     position: absolute;
@@ -44,7 +59,7 @@ Author URI:
        background: #fff;
        position: absolute;
        z-index: 1;
-       top: 100px;
+       top: 70px;
        right: 10px;
        border-radius: 3px;
        width: 160px;

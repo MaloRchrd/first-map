@@ -26,13 +26,29 @@
 <nav id="menuSelect"></nav>
 
 <div id='map'></div>
-<button id='fly'>Fly</button>
 <div id='geocoder-container'></div>
 
 
 <script>
 
 
+function $_GET(param) {
+    var vars = {};
+    window.location.href.replace( location.hash, '' ).replace( 
+        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+        function( m, key, value ) { // callback
+            vars[key] = value !== undefined ? value : '';
+        }
+    );
+
+    if ( param ) {
+        return vars[param] ? vars[param] : null;    
+    }
+    return vars;
+}
+
+var lat = $_GET('lat'),
+    lon = $_GET('lon');
 
 
 
@@ -40,7 +56,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFsb2V1IiwiYSI6ImNpam85Z25wcjAwNXJ2ZW03OGhja
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/maloeu/ciueol6g500cx2is1qh2zdhc9', //stylesheet location
-    center: [2.352221,48.856614], // starting position
+    center: [lon,lat], // starting position
     zoom: 13 // starting zoom
 
 });
@@ -150,40 +166,6 @@ map.on('click', function (e) {
         .addTo(map);
 });
 
-//var param = location.search;
-//alert (param);
-//var result = param.slice(1, -1);
-//if (result != 0) alert("yes"),
-
-
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition),
-        alert(showPosition);
-    } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-function showPosition(position) {
-    alert(position.coords.latitude,position.coords.longitude) ;
-}
-
-
-// Fly to a random location by offsetting the point -74.50, 40
-// by up to 5 degrees.
-
-document.getElementById('fly').addEventListener('click', function () {
-    // Fly to a random location by offsetting the point -74.50, 40
-    // by up to 5 degrees.
-    map.flyTo({
-        center: [position.coords.latitude+ "," +position.coords.longitude]
-    });
-});
-
-
-
- // map.setCenter([result]);
 
 
 

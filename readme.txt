@@ -2,7 +2,7 @@ map
 
 
 
-<h1>Road map<h1>
+Road map
 
 DONE :
 ✓Work on Database from data.gouv.fr transform as geoJson (https://www.data.gouv.fr/fr/datasets/adresses-des-debits-de-tabac/)
@@ -14,9 +14,10 @@ DONE :
   ✓ display streetView image for lat & long
   ✓ add ios & android map support for mobile view
   ✓ promo pour tabac info service https://www.tabac-info-service.fr/
+  ✓ Add url parameters support
 
 TO DO
--Add url parameters support
+
 -Create messenger bot.
 -Create React native app using https://github.com/airbnb/react-native-maps
 -Add server side.
