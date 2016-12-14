@@ -18,7 +18,7 @@ DONE :
 
 TO DO
 
--Create messenger bot.
+-Create messenger bot. —> separate folder for is https://github.com/MaloRchrd/clope-bot
 -Create React native app using https://github.com/airbnb/react-native-maps
 -Add server side.
 -Enable user to crowdsource data ( add or remove a place, Add info to a specific place.)
